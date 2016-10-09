@@ -1,0 +1,14 @@
+body {
+    font-family: Yantramanav;
+}
+
+h2 {
+    font-family: Roboto;
+}
+
+
+md-card-content {
+    height: 220px;
+    overflow: scroll;
+}
+

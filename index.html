@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <!--Required meta tags must come first-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Scroll the Pokemons</title>
+
+
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Montserrat|Yantramanav" rel="stylesheet">
+    <!-- some google font names
+        BODY TEXT FONTS: Open Sans, Roboto, Lato, Kelly Slab, Mallanna, Syncopate, Prompt, Nobile, Days One
+        TITLE FONTS: Poller One, Bowlby One, Montserrat Subrayada, Rubik One, Passion One, Oswald, Lalezar, Baloo Bhai, Ruslan Display
+    -->
+
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- Angular Material CSS -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Bootstrap Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Local CSS-->
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body ng-cloak ng-controller="MainController as mc">
+    <div layout="column">
+        <md-toolbar class="md-padding">
+            <h1> {{mc.title}} </h1>
+        </md-toolbar>
+        <md-content>
+            <md-card flex="50">
+                <md-toolbar>
+                    <md-card-title flex>
+                        <md-card-title-text>
+                            <h2 class="md-headline">Pokemon</h2>
+                            <span class="md-subhead">Scroll to See More</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                </md-toolbar>
+                <md-card-content is-scrolled="mc.getMorePokes()">
+                    <ul class="list-unstyled md-card-image">
+                        <li ng-repeat="poke in mc.pokes">
+                            <img class="img-responsive center-block" ng-src="{{poke.sprite}}" width="128px" alt="sprite">
+
+                            <h2 class="text-center">{{poke.name}}</h2>
+                        </li>
+                        <li ng-show="mc.loading===true">
+                            <p class="text-center">
+                                <i class="fa fa-spinner fa-spin fa-3x"></i>
+                            </p>
+                            <h2 class="text-center">... loading </h2>
+                        </li>
+                    </ul>
+
+                </md-card-content>
+
+            </md-card>
+            </md-container>
+
+            <!-- AngularJS -->
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.js"></script>
+
+            <!-- Angular Material Library -->
+            <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+            <!-- UI-Bootstrap -->
+            <script src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-2.1.3.js"></script>
+
+
+            <!-- local js -->
+            <script src="./app.js"></script>
+            <script src="./httpService.js"></script>
+</body>
+
+</html>
